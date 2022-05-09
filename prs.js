@@ -8,46 +8,59 @@ function computerPlay() {
     return paperRockScissors[Math.floor(Math.random()*paperRockScissors.length)];
 }
 
-let playerSelection = prompt("Do you want to choose rock, paper, or scissors?");
-let computerSelection = computerPlay();
-console.log(computerSelection);
-console.log(playerSelection);
-let x = playerSelection.toLowerCase();
-let y = computerSelection.toLowerCase();
+
+
+let playerScore = 0;
+let computerScore = 0;
 
 //create one round of paper rock scissors
+//changed this function to keep score rather than declare a winner
 function playRound() {
-
-   if (x===y) {
+    let playerSelection = prompt("Do you want to choose rock, paper, or scissors?");
+    let x = playerSelection.toLowerCase();
+    let computerSelection = computerPlay();
+    let y = computerSelection.toLowerCase();
+   
+    if (x===y) {
        return "draw!";
    
     }else if (x === "rock" && y === "scissors") {
-       return "you win!";
+       playerScore += 1;
     
     }else if (x === "scissors" && y ==="paper") {
-        return "you win!";
+        playerScore += 1;
+
     }else if (x === "paper" && y === "rock") {
-        return 'you win!';
+        playerScore += 1;
     
     }else {
-        return "You lose!";
+       computerScore +=1;
+    }
+    
     }
 
-    }
-console.log(playRound());
 
 //we've created a function for a round.  Now we need to create a best of five game
 //make a loop to run the game five times
 //need to keep score of those games
 //and the score needs to be used to declare a winner.
-
+function game() {
 //loop
     for (i=0; i < 5; i++) {
-        let playerSelection = prompt("Do you want to choose rock, paper, or scissors?");
-        let computerSelection = computerPlay();
-        let x = playerSelection.toLowerCase();
-        let y = computerSelection.toLowerCase();
         playRound();
-
     }
-
+//declare winner
+        function score() {
+            if (playerScore > computerScore) {
+                return "You are the winner!";
+            }else if (playerScore < computerScore) {
+                return "The computer is the winner!"
+            }else {
+                return "DRAW!";
+            }
+        }
+    return score();  
+}
+console.log(game());
+console.log(playerScore);
+console.log(computerScore);
