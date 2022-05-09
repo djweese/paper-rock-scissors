@@ -14,10 +14,9 @@ console.log(computerSelection);
 console.log(playerSelection);
 let x = playerSelection.toLowerCase();
 let y = computerSelection.toLowerCase();
-function game() {
-    
-    
-    
+
+//create one round of paper rock scissors
+function playRound() {
 
    if (x===y) {
        return "draw!";
@@ -35,5 +34,20 @@ function game() {
     }
 
     }
-console.log(game());
+console.log(playRound());
+
+//we've created a function for a round.  Now we need to create a best of five game
+//make a loop to run the game five times
+//need to keep score of those games
+//and the score needs to be used to declare a winner.
+
+//loop
+    for (i=0; i < 5; i++) {
+        let playerSelection = prompt("Do you want to choose rock, paper, or scissors?");
+        let computerSelection = computerPlay();
+        let x = playerSelection.toLowerCase();
+        let y = computerSelection.toLowerCase();
+        playRound();
+
+    }
 
